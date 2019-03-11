@@ -12,7 +12,7 @@ app.get('/hello', function (req, res) {
 
 // POST method route
 app.post('/chat', function (req, res) {		
-	// Message
+
 	var message = req.body.msg.split(' ')
 	var k = message[0]
 
@@ -21,13 +21,14 @@ app.post('/chat', function (req, res) {
 	var object = JSON.parse(content)
 
 	if (message.length === 1) {
+
 		(k in object) ? 
 		res.send(k + ': ' + object[k])
 		: res.send('Je ne connais pas ' + k + '...')
 	}
 
 	if (message.length === 3) {
-		// Set value to object
+
 		object[k] = message[2]
 
 		// Write in file
