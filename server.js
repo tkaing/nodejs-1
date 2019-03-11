@@ -1,14 +1,11 @@
-const http = require('http');
+const express = require('express')
+const app = express()
 
-const hostname = 'ancient-lake-62080.herokuapp.com';
-const port = 3000;
+app.get('/hello', function (req, res) {
+  res.send('Hello World')
+})
 
-const server = http.createServer((req, res) => {
-  res.statusCode = 200;
-  res.setHeader('Content-Type', 'text/plain');
-  res.end('Hello World\n');
-});
-
-server.listen(port, hostname, () => {
-  console.log(`Server running at https://${hostname}:${port}/hello`);
-});
+var port = process.env.PORT || 3000;
+app.listen(port, function () {
+  console.log('Example app listening on port ', port)
+})
